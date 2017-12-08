@@ -146,7 +146,7 @@
 
 这个方法如何理解呢？首先我们自己的ViewHolder要继承MultiItemAdapter的ViewHolder，同时保证ViewHolder为static类型（如果是内部类声明的话）
 
-ViewHolder声明如下：（这里我是写在adapter内部，所以均加上static修饰符），xml就不写了
+ViewHolder声明如下：（这里我是写在adapter内部，所以均加上static修饰符），xml就不写了，**我把xml的绑定写在了这里面**
 
     public static class ViewHolder1 extends ViewHolder {
 
@@ -162,7 +162,7 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
         }
 
         @Override
-        protected int getLayoutId() {
+        protected int getLayoutId() {//这里绑定layoutId
             return R.layout.adapter_multi_item_1;
         }
     }
