@@ -224,3 +224,5 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
 demo中图片绑定使用了xUtils3，动态权限使用了EZPermission。详细可查看源码。下面是效果图：
 
 ![](GIF.gif)
+
+2017/12/8 17:12:14 created by 王宇
