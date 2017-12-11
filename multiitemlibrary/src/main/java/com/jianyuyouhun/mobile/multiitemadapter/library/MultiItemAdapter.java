@@ -155,6 +155,7 @@ public abstract class MultiItemAdapter extends BaseAdapter {
         return typeList.size();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         int itemType = getItemViewType(position);
@@ -177,20 +178,11 @@ public abstract class MultiItemAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         MultiItem multiItem = getItem(position);
-        bindView(itemType, viewHolder, multiItem, position);
+        viewHolder.onBindView(this, multiItem, position);
         return convertView;
     }
 
-    /**
-     * 绑定item布局内容
-     * @param itemType      item类型
-     * @param viewHolder    viewHolder
-     * @param multiItem     multiItem
-     * @param position      当前位置
-     */
-    protected abstract void bindView(int itemType, ViewHolder viewHolder, MultiItem multiItem, int position);
-
-    public static abstract class ViewHolder {
+    public static abstract class ViewHolder<T extends MultiItem> {
         private View itemView;
 
         public final View getItemView() {
@@ -203,5 +195,7 @@ public abstract class MultiItemAdapter extends BaseAdapter {
 
         @LayoutRes
         protected abstract int getLayoutId();
+
+        protected abstract void onBindView(MultiItemAdapter adapter, T info, int position);
     }
 }

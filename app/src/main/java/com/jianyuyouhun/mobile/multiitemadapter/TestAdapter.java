@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItem;
 import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItemAdapter;
 
 import org.xutils.x;
@@ -45,43 +44,7 @@ public class TestAdapter extends MultiItemAdapter {
         }
     }
 
-    @Override
-    protected void bindView(int itemType, ViewHolder viewHolder, MultiItem multiItem, int position) {
-        switch (itemType) {
-            case ItemId.TYPE_ONE:
-                ViewHolder1 viewHolder1 = (ViewHolder1) viewHolder;
-                Item1 item1 = (Item1) multiItem;
-                bindItem1View(viewHolder1, item1, position);
-                break;
-            case ItemId.TYPE_TWO:
-                ViewHolder2 viewHolder2 = (ViewHolder2) viewHolder;
-                Item2 item2 = (Item2) multiItem;
-                bindItem2View(viewHolder2, item2, position);
-                break;
-            case ItemId.TYPE_TREE:
-                ViewHolder3 viewHolder3 = (ViewHolder3) viewHolder;
-                Item3 item3 = (Item3) multiItem;
-                bindItem3View(viewHolder3, item3, position);
-                break;
-        }
-    }
-
-    private void bindItem1View(ViewHolder1 viewHolder, Item1 item, int position) {
-        viewHolder.mTextView.setText(item.getName());
-        final String url = item.getUrl();
-        viewHolder.imageView.setTag(url);
-        x.image().bind(viewHolder.imageView, url);
-    }
-
-    private void bindItem2View(ViewHolder2 viewHolder2, Item2 item2, int position) {
-        viewHolder2.mTextView.setText(item2.getName());
-    }
-
-    private void bindItem3View(ViewHolder3 viewHolder3, Item3 item3, int position) {
-        viewHolder3.mTextView.setText(item3.getName());
-    }
-
-    public static class ViewHolder1 extends ViewHolder {
+    public static class ViewHolder1 extends ViewHolder<Item1> {
 
         private TextView mTextView;
 
@@ -98,9 +61,17 @@ public class TestAdapter extends MultiItemAdapter {
         protected int getLayoutId() {
             return R.layout.adapter_multi_item_1;
         }
+
+        @Override
+        protected void onBindView(MultiItemAdapter adapter, Item1 info, int position) {
+            mTextView.setText(info.getName());
+            final String url = info.getUrl();
+            imageView.setTag(url);
+            x.image().bind(imageView, url);
+        }
     }
 
-    public static class ViewHolder2 extends ViewHolder {
+    public static class ViewHolder2 extends ViewHolder<Item2> {
 
         private TextView mTextView;
 
@@ -114,9 +85,14 @@ public class TestAdapter extends MultiItemAdapter {
         protected int getLayoutId() {
             return R.layout.adapter_multi_item_2;
         }
+
+        @Override
+        protected void onBindView(MultiItemAdapter adapter, Item2 info, int position) {
+            mTextView.setText(info.getName());
+        }
     }
 
-    public static class ViewHolder3 extends ViewHolder {
+    public static class ViewHolder3 extends ViewHolder<Item3> {
 
         private TextView mTextView;
 
@@ -129,6 +105,11 @@ public class TestAdapter extends MultiItemAdapter {
         @Override
         protected int getLayoutId() {
             return R.layout.adapter_multi_item_3;
+        }
+
+        @Override
+        protected void onBindView(MultiItemAdapter adapter, Item3 info, int position) {
+            mTextView.setText(info.getName());
         }
     }
 }
