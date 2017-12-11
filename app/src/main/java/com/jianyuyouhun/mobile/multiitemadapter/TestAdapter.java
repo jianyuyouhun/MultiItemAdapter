@@ -90,8 +90,8 @@ public class TestAdapter extends MultiItemAdapter {
         @Override
         protected void setItemView(View itemView) {
             super.setItemView(itemView);
-            mTextView = itemView.findViewById(R.id.list_item_text1);
-            imageView = itemView.findViewById(R.id.list_image);
+            mTextView = (TextView) itemView.findViewById(R.id.list_item_text1);
+            imageView = (ImageView) itemView.findViewById(R.id.list_image);
         }
 
         @Override
@@ -107,7 +107,7 @@ public class TestAdapter extends MultiItemAdapter {
         @Override
         protected void setItemView(View itemView) {
             super.setItemView(itemView);
-            mTextView = itemView.findViewById(R.id.list_item_text2);
+            mTextView = (TextView) itemView.findViewById(R.id.list_item_text2);
         }
 
         @Override
@@ -123,7 +123,7 @@ public class TestAdapter extends MultiItemAdapter {
         @Override
         protected void setItemView(View itemView) {
             super.setItemView(itemView);
-            mTextView = itemView.findViewById(R.id.list_item_text3);
+            mTextView = (TextView) itemView.findViewById(R.id.list_item_text3);
         }
 
         @Override
