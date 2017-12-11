@@ -1,6 +1,7 @@
-package cn.longmaster.mobile.multiitemadapter;
+package com.jianyuyouhun.mobile.multiitemadapter;
 
-import cn.longmaster.mobile.multiitemadapter.library.MultiItem;
+
+import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItem;
 
 /**
  * item1

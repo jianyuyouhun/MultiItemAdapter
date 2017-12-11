@@ -1,4 +1,4 @@
-package cn.longmaster.mobile.multiitemadapter;
+package com.jianyuyouhun.mobile.multiitemadapter;
 
 import android.app.Application;
 

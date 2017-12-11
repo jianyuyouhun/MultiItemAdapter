@@ -1,16 +1,17 @@
-package cn.longmaster.mobile.multiitemadapter;
+package com.jianyuyouhun.mobile.multiitemadapter;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItem;
+import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItemAdapter;
+
 import org.xutils.x;
 
 import java.util.List;
 
-import cn.longmaster.mobile.multiitemadapter.library.MultiItem;
-import cn.longmaster.mobile.multiitemadapter.library.MultiItemAdapter;
 
 /**
  * 测试多item适配器

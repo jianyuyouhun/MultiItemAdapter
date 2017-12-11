@@ -1,4 +1,4 @@
-package cn.longmaster.mobile.multiitemadapter;
+package com.jianyuyouhun.mobile.multiitemadapter;
 
 import android.Manifest;
 import android.content.Intent;
@@ -8,14 +8,13 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItem;
 import com.jianyuyouhun.permission.library.EZPermission;
 import com.jianyuyouhun.permission.library.OnRequestPermissionResultListener;
 import com.jianyuyouhun.permission.library.PRequester;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.longmaster.mobile.multiitemadapter.library.MultiItem;
 
 public class MainActivity extends AppCompatActivity {
 

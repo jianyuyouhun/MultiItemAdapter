@@ -1,4 +1,4 @@
-package cn.longmaster.mobile.multiitemadapter.library;
+package com.jianyuyouhun.mobile.multiitemadapter.library;
 
 import android.support.annotation.IntRange;
 

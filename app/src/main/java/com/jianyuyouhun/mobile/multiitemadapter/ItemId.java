@@ -1,10 +1,10 @@
-package cn.longmaster.mobile.multiitemadapter;
+package com.jianyuyouhun.mobile.multiitemadapter;
 
 import android.support.annotation.IntDef;
 
-import static cn.longmaster.mobile.multiitemadapter.ItemId.TYPE_ONE;
-import static cn.longmaster.mobile.multiitemadapter.ItemId.TYPE_TREE;
-import static cn.longmaster.mobile.multiitemadapter.ItemId.TYPE_TWO;
+import static com.jianyuyouhun.mobile.multiitemadapter.ItemId.TYPE_ONE;
+import static com.jianyuyouhun.mobile.multiitemadapter.ItemId.TYPE_TREE;
+import static com.jianyuyouhun.mobile.multiitemadapter.ItemId.TYPE_TWO;
 
 /**
  * ItemId类型枚举，值不能为正数，可以为0

@@ -10,10 +10,6 @@
 
 ## 框架引入 ##
 
-下载jar包，放到项目的目录下
-
-1. [jar地址](sdk/MultiItemAdapter.jar)
-2. build.gradle引用代码` compile fileTree(dir: 'libs', include: ['*.jar'])`
 
 ## 使用 ##
 
