@@ -10,6 +10,18 @@
 
 ## 框架引入 ##
 
+在项目的根目录下的gradle中添加
+
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+在app目录的gradle中添加依赖
+
+    compile 'com.github.jianyuyouhun:MultiItemAdapter:1.0'
 
 ## 使用 ##
 
