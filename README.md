@@ -97,7 +97,7 @@
 	}
 
 
-**接下来继承MultiItemAdapter开发，我们需要重写三个方法。**具体使用我会详细说明
+**接下来继承MultiItemAdapter开发，我们需要重写两个方法。**具体使用我会详细说明
 
 
     /**
@@ -113,17 +113,7 @@
      */
     protected abstract Class<? extends ViewHolder> getViewHolderByItemType(Integer itemType);
 
-    /**
-     * 绑定item布局内容
-     * @param itemType      item类型
-     * @param viewHolder    viewHolder
-     * @param multiItem     multiItem
-     * @param position      当前位置
-     */
-    protected abstract void bindView(int itemType, ViewHolder viewHolder, MultiItem multiItem, int position);
-
 #### initItemType(List<Integer> typeList)方法 ####
-
 
 此方法用来注册子类型的id，也就是标识唯一itemType。为了方便管理，我在demo中定义了一个枚举整型数据ItemId，具体开发中你可以不用这么设计。
 
@@ -131,8 +121,8 @@
 	 * ItemId类型枚举，值不能为正数，可以为0
 	 * Created by wangyu on 2017/12/8.
 	 */
-	
-	
+
+
 	@IntDef({TYPE_ONE, TYPE_TWO, TYPE_TREE})
 	@interface ItemId {
 	    int TYPE_ONE = -1;
@@ -154,9 +144,11 @@
 
 这个方法如何理解呢？首先我们自己的ViewHolder要继承MultiItemAdapter的ViewHolder，同时保证ViewHolder为static类型（如果是内部类声明的话）
 
+ViewHolder使用时声明泛型，重写onBindView(MultiItemAdapter adapter, T info, int position)方法，当数据显示时会调用此方法，在这里执行相关逻辑
+
 ViewHolder声明如下：（这里我是写在adapter内部，所以均加上static修饰符），xml就不写了，**我把xml的绑定写在了这里面**
 
-    public static class ViewHolder1 extends ViewHolder {
+    public static class ViewHolder1 extends ViewHolder<Item1> {
 
         private TextView mTextView;
 
@@ -173,9 +165,17 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
         protected int getLayoutId() {//这里绑定layoutId
             return R.layout.adapter_multi_item_1;
         }
+
+        @Override
+        protected void onBindView(MultiItemAdapter adapter, Item1 info, int position) {
+            mTextView.setText(info.getName());
+            final String url = info.getUrl();
+            imageView.setTag(url);
+            x.image().bind(imageView, url);
+        }
     }
 
-    public static class ViewHolder2 extends ViewHolder {
+    public static class ViewHolder2 extends ViewHolder<Item2> {
 
         private TextView mTextView;
 
@@ -189,9 +189,14 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
         protected int getLayoutId() {
             return R.layout.adapter_multi_item_2;
         }
+
+        @Override
+        protected void onBindView(MultiItemAdapter adapter, Item2 info, int position) {
+            mTextView.setText(info.getName());
+        }
     }
 
-    public static class ViewHolder3 extends ViewHolder {
+    public static class ViewHolder3 extends ViewHolder<Item3> {
 
         private TextView mTextView;
 
@@ -204,6 +209,11 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
         @Override
         protected int getLayoutId() {
             return R.layout.adapter_multi_item_3;
+        }
+
+        @Override
+        protected void onBindView(MultiItemAdapter adapter, Item3 info, int position) {
+            mTextView.setText(info.getName());
         }
     }
 
@@ -223,10 +233,7 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
         }
     }
 
-#### bindView(int itemType, ViewHolder viewHolder, MultiItem multiItem, int position)方法 ####
-
-这个方法就比较好理解了，要做的就是根据不同的itemType将viewHolder强转为目标ViewHolder（viewHolder1,viewHolder2或viewHolder3）,然后我们的三个实体类需要实现MultiItem接口，返回对应的itemType，在这里就将multiItem同样的强转为我们的item1，item2，item3。然后做对应的显示逻辑
-
+这样，就大功告成了！！
 ### 3、更多 ###
 
 demo中图片绑定使用了xUtils3，动态权限使用了EZPermission。详细可查看源码。下面是效果图：
