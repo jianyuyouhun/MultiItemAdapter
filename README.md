@@ -234,7 +234,12 @@ ViewHolder声明如下：（这里我是写在adapter内部，所以均加上sta
     }
 
 这样，就大功告成了！！
-### 3、更多 ###
+
+### 3、设置数据 ###
+
+调用adapter的setData/addData方法，内部调用了notifyDataSetChanged，所以无需手动调用，还有些其他的公开方法，具体可查源码
+
+### 4、更多 ###
 
 demo中图片绑定使用了xUtils3，动态权限使用了EZPermission。详细可查看源码。下面是效果图：
 
