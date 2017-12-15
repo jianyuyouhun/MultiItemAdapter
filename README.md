@@ -21,7 +21,7 @@
 
 在app目录的gradle中添加依赖
 
-    compile 'com.github.jianyuyouhun:MultiItemAdapter:1.2'
+    compile 'com.github.jianyuyouhun:MultiItemAdapter:1.3'
 
 ## 使用 ##
 
