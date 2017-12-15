@@ -35,13 +35,30 @@ public abstract class MultiItemAdapter extends BaseAdapter {
             viewHolderClasses.put(integer, getViewHolderByItemType(integer));
         }
     }
+
+    /**
+     * 默认添加到末尾
+     * @param datas     数据列表
+     */
+    public void addData(List<MultiItem> datas) {
+        addData(datas, AddType.TO_LAST);
+    }
+
     /**
      * 添加要显示的数据到末尾 注意：调用本方法设置数据，listView不需要再调用：notifyDataSetChanged
      *
-     * @param datas 数据列表
+     * @param datas     数据列表
+     * @param addType   添加方式，添加到头/尾
      */
-    public void addData(List<MultiItem> datas) {
-        this.dataList.addAll(datas);
+    public void addData(List<MultiItem> datas, AddType addType) {
+        switch (addType) {
+            case TO_LAST:
+                this.dataList.addAll(datas);
+                break;
+            case TO_FIRST:
+                this.dataList.addAll(0, datas);
+                break;
+        }
         notifyDataSetChanged();
     }
 
@@ -197,5 +214,9 @@ public abstract class MultiItemAdapter extends BaseAdapter {
         protected abstract int getLayoutId();
 
         protected abstract void onBindView(MultiItemAdapter adapter, T info, int position);
+    }
+
+    public enum AddType {
+        TO_LAST, TO_FIRST
     }
 }

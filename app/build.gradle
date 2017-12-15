@@ -24,7 +24,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile project(':multiitemlibrary')
-//    compile 'com.github.jianyuyouhun:MultiItemAdapter:1.0'
-    compile 'org.xutils:xutils:3.5.0'
+//    compile 'com.github.jianyuyouhun:MultiItemAdapter:1.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.jianyuyouhun:ezpermission:1.2'
 }

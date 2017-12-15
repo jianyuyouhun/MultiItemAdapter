@@ -6,8 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jianyuyouhun.mobile.multiitemadapter.library.MultiItemAdapter;
-
-import org.xutils.x;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -65,9 +64,10 @@ public class TestAdapter extends MultiItemAdapter {
         @Override
         protected void onBindView(MultiItemAdapter adapter, Item1 info, int position) {
             mTextView.setText(info.getName());
-            final String url = info.getUrl();
-            imageView.setTag(url);
-            x.image().bind(imageView, url);
+            String url = info.getUrl();
+            Picasso.with(adapter.getContext())
+                    .load(url)
+                    .into(imageView);
         }
     }
 
